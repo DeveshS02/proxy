@@ -1,11 +1,12 @@
 const express = require('express');
-const cors= require('cors');
+const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
+require('dotenv').config();
 
 const app = express();
 
-// Define allowed origins
-const allowedOrigins = ['http://localhost', 'http://localhost:5174', 'https://react-water-iot.vercel.app'];
+// Define allowed origins from environment variable
+const allowedOrigins = process.env.ALLOWED_ORIGINS.split(',');
 
 // Configure CORS
 const corsOptions = {
@@ -22,20 +23,16 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// List of endpoints to proxy
-const endpoints = [
-    'tankdata',
-    'waterC',
-    'latestwaterC',
-    'staticnodesC',
-    'borewellnodesC',
-    'borewellgraphC'
-];
+// List of endpoints from environment variable
+const endpoints = process.env.ENDPOINTS.split(',');
+
+// Target URL from environment variable
+const targetUrl = process.env.TARGET_URL;
 
 // Configure the proxy for each endpoint
 endpoints.forEach(endpoint => {
     app.use(`/water/${endpoint}`, createProxyMiddleware({
-        target: `https://spcrc.iiit.ac.in/water/${endpoint}`,
+        target: `${targetUrl}/${endpoint}`,
         changeOrigin: true,
     }));    
 });
