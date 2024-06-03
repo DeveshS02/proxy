@@ -1,0 +1,36 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/water/tankdata",
+        "dest": "/server.js"
+      },
+      {
+        "src": "/water/waterC",
+        "dest": "/server.js"
+      },
+      {
+        "src": "/water/latestwaterC",
+        "dest": "/server.js"
+      },
+      {
+        "src": "/water/staticnodesC",
+        "dest": "/server.js"
+      },
+      {
+        "src": "/water/borewellnodesC",
+        "dest": "/server.js"
+      },
+      {
+        "src": "/water/borewellgraphC",
+        "dest": "/server.js"
+      }
+    ]
+  }
+  
