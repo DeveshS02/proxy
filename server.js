@@ -21,7 +21,7 @@ const corsOptions = {
     }
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 // List of endpoints from environment variable
 const endpoints = process.env.ENDPOINTS.split(',');
