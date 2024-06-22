@@ -30,6 +30,18 @@
       {
         "src": "/water/borewellgraphC",
         "dest": "/server.js"
+      },
+      {
+        "src": "/water/waterminutesdatas",
+        "dest": "/server.js"
+      },
+      {
+        "src": "/water/borewelldata",
+        "dest": "/server.js"
+      },
+      {
+        "src": "/water/tankerdata",
+        "dest": "/server.js"
       }
     ]
   }
